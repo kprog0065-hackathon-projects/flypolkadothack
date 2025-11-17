@@ -1,81 +1,107 @@
 "use client";
 
+import React from "react";
+import Image from "next/image";
 import Link from "next/link";
-import { Address } from "@scaffold-ui/components";
-import type { NextPage } from "next";
-import { hardhat } from "viem/chains";
-import { useAccount } from "wagmi";
-import { BugAntIcon, MagnifyingGlassIcon } from "@heroicons/react/24/outline";
-import { useTargetNetwork } from "~~/hooks/scaffold-eth";
 
-const Home: NextPage = () => {
-  const { address: connectedAddress } = useAccount();
-  const { targetNetwork } = useTargetNetwork();
+const FEATURES = [
+  {
+    title: "Fractional NFT Marketplace",
+    desc: "Invest in luxury fashion pieces through blockchain technology",
+    accent: "bg-[#FFC439]",
+    href: "/marketplace",
+  },
+  {
+    title: "Vote on New Designs",
+    desc: "Shape the future of fashion and earn rewards for your predictions",
+    accent: "bg-[#E6007A]",
+    href: "/vote",
+  },
+  {
+    title: "Exclusive Rewards",
+    desc: "Unlock luxury benefits and earn Fly tokens for your participation",
+    accent: "bg-[#333]",
+    href: "/rewards",
+  },
+  {
+    title: "Luxury Discounts",
+    desc: "Access exclusive deals from premium fashion brands",
+    accent: "bg-[#333]",
+    href: "/discounts",
+  },
+];
 
-  return (
-    <>
-      <div className="flex items-center flex-col grow pt-10">
-        <div className="px-5">
-          <h1 className="text-center">
-            <span className="block text-2xl mb-2">Welcome to</span>
-            <span className="block text-4xl font-bold">Scaffold-ETH 2</span>
-          </h1>
-          <div className="flex justify-center items-center space-x-2 flex-col">
-            <p className="my-2 font-medium">Connected Address:</p>
-            <Address
-              address={connectedAddress}
-              chain={targetNetwork}
-              blockExplorerAddressLink={
-                targetNetwork.id === hardhat.id ? `/blockexplorer/address/${connectedAddress}` : undefined
-              }
-            />
-          </div>
+const KPIS = [
+  { value: "$2.4M+", label: "Total Value Traded" },
+  { value: "15K+", label: "Active Voters" },
+  { value: "50+", label: "Luxury Partners" },
+];
 
-          <p className="text-center text-lg">
-            Get started by editing{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/nextjs/app/page.tsx
-            </code>
-          </p>
-          <p className="text-center text-lg">
-            Edit your smart contract{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              YourContract.sol
-            </code>{" "}
-            in{" "}
-            <code className="italic bg-base-300 text-base font-bold max-w-full break-words break-all inline-block">
-              packages/hardhat/contracts
-            </code>
-          </p>
-        </div>
-
-        <div className="grow bg-base-300 w-full mt-16 px-8 py-12">
-          <div className="flex justify-center items-center gap-12 flex-col md:flex-row">
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <BugAntIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Tinker with your smart contract using the{" "}
-                <Link href="/debug" passHref className="link">
-                  Debug Contracts
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-            <div className="flex flex-col bg-base-100 px-10 py-10 text-center items-center max-w-xs rounded-3xl">
-              <MagnifyingGlassIcon className="h-8 w-8 fill-secondary" />
-              <p>
-                Explore your local transactions with the{" "}
-                <Link href="/blockexplorer" passHref className="link">
-                  Block Explorer
-                </Link>{" "}
-                tab.
-              </p>
-            </div>
-          </div>
-        </div>
+const LandingPage: React.FC = () => (
+  <div className="min-h-screen flex flex-col bg-black">
+    {/* Logo Centerpiece */}
+    <section className="flex flex-col items-center pt-28 pb-2">
+      <div className="bg-black rounded-full p-4">
+        <Image src="/flylogoblack.png" alt="Fly logo" width={300} height={300} className="bg-black rounded" priority />
       </div>
-    </>
-  );
-};
+    </section>
 
-export default Home;
+    {/* Hero */}
+    <section className="flex flex-col items-center justify-center pb-10 px-4">
+      <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#FFC439] text-center leading-tight">
+        The Future of <span className="text-[#E6007A]">Luxury Fashion</span>
+      </h1>
+      <p className="mt-6 max-w-xl text-center text-lg text-white">
+        A next-generation platform blending blockchain technology with luxury fashion. Trade fractional ownership,
+        discover emerging talent, and unlock exclusive rewards.
+      </p>
+      <div className="mt-8 flex flex-col sm:flex-row gap-4">
+        <Link
+          href="/marketplace"
+          className="bg-[#FFC439] text-black font-semibold px-8 py-3 rounded-lg hover:bg-[#FFD966] transition"
+        >
+          Explore Marketplace
+        </Link>
+        <Link
+          href="/discoverfashion"
+          className="bg-[#E6007A] text-white font-semibold px-8 py-3 rounded-lg hover:bg-pink-700 transition"
+        >
+          Explore New Designers
+        </Link>
+      </div>
+    </section>
+
+    {/* Features */}
+    <section className="w-full px-4 pb-8">
+      <h2 className="text-2xl md:text-3xl font-bold text-center text-[#E6007A] mb-8">Discover the Platform</h2>
+      <div className="flex flex-wrap justify-center gap-6">
+        {FEATURES.map((feat, i) => (
+          <Link
+            href={feat.href}
+            key={i}
+            className="flex flex-col gap-4 items-start bg-[#131313] text-white shadow-lg rounded-2xl border-2 border-transparent hover:border-[#E6007A] p-7 w-72 transition"
+          >
+            <div className={`w-9 h-9 rounded-lg ${feat.accent}`} />
+            <div className="font-bold text-[#FFC439] text-lg mb-1">{feat.title}</div>
+            <div className="mb-2">{feat.desc}</div>
+            <span className="text-[#E6007A] font-semibold mt-auto">Explore &rarr;</span>
+          </Link>
+        ))}
+      </div>
+    </section>
+
+    {/* KPIs */}
+    <section className="mt-auto bg-gradient-to-r from-black via-black to-[#E6007A99] py-14">
+      <div className="flex flex-col md:flex-row justify-center gap-14 max-w-5xl mx-auto px-4">
+        {KPIS.map((kpi, i) => (
+          <div key={i} className="text-center flex-1">
+            <div className="text-3xl md:text-4xl font-bold text-[#FFC439]">{kpi.value}</div>
+            <div className="text-white text-lg mt-1">{kpi.label}</div>
+          </div>
+        ))}
+      </div>
+    </section>
+  </div>
+);
+
+export default LandingPage;
