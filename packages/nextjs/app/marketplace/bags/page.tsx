@@ -86,7 +86,7 @@ export default function BagsPage() {
             </span>
             {/* NFT image */}
             <div className="flex items-center justify-center h-48 bg-[#232323]">
-              <Image src={item.img} alt={item.name} className="object-contain max-h-40" />
+              <Image src={item.img} alt={item.name} width={200} height={160} className="object-contain max-h-40" />
             </div>
             {/* Details */}
             <div className="p-6">
