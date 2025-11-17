@@ -8,7 +8,7 @@ async function main() {
   console.log("FlyToken deployed to:", await flyToken.getAddress());
 
   // Deploy FlyNFT - use the deployed FlyToken address
-  const uri = "ipfs://bafybeicqhpzh3lnuyuwcngtbupflfgdrx25eqsakrhxet5xzhr7rwho47i/{id}.json";
+  const uri = "ipfs://bafybeiftiafkxczuj44atwyq4c2v43xmrmkbxttpq6d2wi7oj3e43mks4u/{id}.json";
   const FlyNFT = await hre.ethers.getContractFactory("FlyNFT");
   const flyNFT = await FlyNFT.deploy(uri, await flyToken.getAddress());
   await flyNFT.waitForDeployment();

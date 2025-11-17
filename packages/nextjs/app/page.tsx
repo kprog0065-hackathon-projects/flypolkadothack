@@ -20,13 +20,13 @@ const FEATURES = [
   {
     title: "Exclusive Rewards",
     desc: "Unlock luxury benefits and earn Fly tokens for your participation",
-    accent: "bg-[#333]",
+    accent: "bg-[#FFC439]",
     href: "/rewards",
   },
   {
     title: "Luxury Discounts",
     desc: "Access exclusive deals from premium fashion brands",
-    accent: "bg-[#333]",
+    accent: "bg-[#E6007A]",
     href: "/discounts",
   },
 ];
@@ -40,9 +40,16 @@ const KPIS = [
 const LandingPage: React.FC = () => (
   <div className="min-h-screen flex flex-col bg-black">
     {/* Logo Centerpiece */}
-    <section className="flex flex-col items-center pt-28 pb-2">
-      <div className="bg-black rounded-full p-4">
-        <Image src="/flylogoblack.png" alt="Fly logo" width={300} height={300} className="bg-black rounded" priority />
+    <section className="flex flex-col items-center pt-15 pb-2">
+      <div className="p-4 bg-black">
+        <Image
+          src="/flylogoblack.png"
+          alt="Fly logo"
+          width={300}
+          height={300}
+          className="border-1 border-[#FFC439] rounded bg-black"
+          priority
+        />
       </div>
     </section>
 

@@ -53,7 +53,7 @@ const FLY_EXCHANGE = 1.0; // Set dynamically from your backend/feed (1 FLY = 1 U
 
 export default function LuxuryShopPage() {
   return (
-    <section className="min-h-screen bg-black px-6 pt-32">
+    <section className="min-h-screen bg-black px-6 pt-10">
       <h2 className="text-4xl font-bold text-[#FFC439] mb-12 text-center">Shop Luxury Items</h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-16">
         {goods.map(item => {

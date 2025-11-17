@@ -14,6 +14,21 @@ const nextConfig: NextConfig = {
     config.externals.push("pino-pretty", "lokijs", "encoding");
     return config;
   },
+  // Always allow dweb.link as an external image provider except when unoptimized
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**.ipfs.dweb.link",
+        pathname: "/**",
+      },
+      {
+        protocol: "https",
+        hostname: "dweb.link",
+        pathname: "/ipfs/**",
+      },
+    ],
+  },
 };
 
 const isIpfs = process.env.NEXT_PUBLIC_IPFS_BUILD === "true";

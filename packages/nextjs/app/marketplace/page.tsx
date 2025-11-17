@@ -24,7 +24,7 @@ const TABS = [
 
 export default function MarketplaceTabsPage() {
   return (
-    <section className="min-h-screen bg-black flex flex-col items-center justify-center">
+    <section className="min-h-screen bg-black flex flex-col items-center justify-start pt-32">
       <h1 className="text-5xl font-bold mb-14 text-[#FFC439]">RWA Collectibles Marketplace</h1>
       <div className="flex flex-col md:flex-row gap-16 px-8 w-full justify-center">
         {TABS.map(tab => (

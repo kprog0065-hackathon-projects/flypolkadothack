@@ -62,7 +62,7 @@ export default function DiscoveryPage() {
   const design = designs[index];
 
   return (
-    <section className="min-h-screen bg-black py-10 px-4 flex flex-col md:flex-row gap-6 pt-32">
+    <section className="min-h-screen bg-black py-10 px-4 flex flex-col md:flex-row gap-6 pt-15">
       {/* Main voting panel (expanded) */}
       <div className="flex-[2] mx-auto">
         <h1 className="text-3xl font-bold text-[#FFC439] mb-2">Rate New Designers</h1>
